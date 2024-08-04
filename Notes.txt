@@ -1,0 +1,132 @@
+<----------GIT COMMANDS------------>
+--------Getting & Creating Projects----------
+
+git init	******1. Initialize a local Git repository**********
+git clone ssh://git@github.com/[username]/[repository-name].git	//Create a local copy of a remote repository
+
+--------Basic Snapshotting------------
+
+git status	*************//Check status
+git add [file-name.txt]	//Add a file to the staging area
+git add -A	*****************2. //Add all new and changed files to the staging area
+git commit -m "[commit message]"	*********************3. Commit changes
+git rm -r [file-name.txt]	//Remove a file (or folder)
+
+------------------Branching & Merging------------
+
+git branch	//List branches (the asterisk denotes the current branch)
+git branch -a	//List all branches (local and remote)
+git branch [branch name]	//Create a new branch
+git branch -d [branch name]	//Delete a branch
+git push origin --delete [branch name]	//Delete a remote branch
+git checkout -b [branch name]	//Create a new branch and switch to it
+git checkout -b [branch name] origin/[branch name]	//Clone a remote branch and switch to it
+git branch -m [old branch name] [new branch name]	//Rename a local branch
+git checkout [branch name]	//Switch to a branch
+git checkout -	//Switch to the branch last checked out
+git checkout -- [file-name.txt]	//Discard changes to a file
+git merge [branch name]	//Merge a branch into the active branch
+git merge [source branch] [target branch]	//Merge a branch into a target branch
+git stash	//Stash changes in a dirty working directory
+git stash clear	//Remove all stashed entries
+
+--------Sharing & Updating Projects--------
+
+git push origin [branch name]	//Push a branch to your remote repository
+git push -u origin [branch name]	*****************4. //Push changes to remote repository (and remember the branch)
+git push	//Push changes to remote repository (remembered branch)
+git push origin --delete [branch name]	//Delete a remote branch
+git pull	//Update local repository to the newest commit
+git pull origin [branch name]	//Pull changes from remote repository
+git remote add origin ssh://git@github.com/[username]/[repository-name].git	//Add a remote repository
+git remote set-url origin ssh://git@github.com/[username]/[repository-name].git	//Set a repository's origin branch to SSH
+
+--------------Inspection & Comparison-------------
+
+git log	//View changes
+git log --summary	//View changes (detailed)
+git log --oneline	//View changes (briefly)
+git diff [source branch] [target branch]	//Preview changes before merging
+
+
+*****************************************
+// In Local disk
+git init
+
+//add files/folders
+git add 
+
+// commit
+git commit -m "Comment"
+
+//add origin repository
+git remote add origin https://github.com/Sarvil/Dev.git
+
+// set branch
+git branch -M main
+
+//Push
+git push -u origin main
+*********************************************
+
+<----------GIT COMMANDS------------>
+
+<----------Host on NETLIFY------------>
+
+//on client folder
+npm run build
+
+//ONE-TIME ISNTALL
+npm install -g netlify-cli
+
+//NEW SITE
+ntl init
+
+//deploy
+ntl deploy
+
+//deploy production site
+ntl deploy --prod
+<----------Host on NETLIFY------------>
+
+<----------GENERATE SSL CERTIFICATE------------>
+// in server folder
+mkdir cert
+cd cert
+
+//generate private key
+openssl genrsa -out key.pem
+
+//generate certificate signing request //Fill details
+openssl req -new -key key.pem -out csr.pem 
+
+//generate SSL Cert from CSR
+openssl x509 -req -days 999 -in csr.pem -signkey key.pem -out cert.pem
+
+const sslServer = https.createServer(
+	{
+		key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem'));
+		cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'));
+	},
+	app
+)
+
+sslServer.listen(PORT, () =>{
+	console.log("Server is running");
+}
+<----------GENERATE SSL CERTIFICATE------------>
+
+https://dev-n9lp.onrender.com/api/upload/question
+
+
+BACKEND_URL = https://dev-n9lp.onrender.com
+FRONTEND_URL = https://attacker1510.netlify.app
+
+VITE_FONTEND_URL=https://attacker1510.netlify.app
+VITE_BACKEND_URL=https://dev-n9lp.onrender.com
+
+BACKEND_URL = https://localhost:1337
+FRONTEND_URL = https://localhost:5173
+
+VITE_FONTEND_URL=https://localhost:5173
+VITE_BACKEND_URL=https://localhost:1337
